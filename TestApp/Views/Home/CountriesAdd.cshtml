@@ -1,0 +1,17 @@
+﻿@model TestApp.Models.Countries
+
+@{
+    ViewData["Title"] = "CountriesAdd";
+}
+
+<form asp-action="CountriesAdd" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="CountryName" class="control-label">Страна</label>
+        <input type="text" asp-for="CountryName" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

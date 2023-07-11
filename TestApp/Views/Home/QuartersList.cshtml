@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Quarters";
+}
+
+@model IEnumerable<TestApp.Models.Quarters>
+
+<a asp-action="QuartersAdd" asp-controller="Home" class="btn btn-danger">Добавить запись</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Название</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var quarter in Model)
+        {
+            <tr>
+                <td scope="row">@quarter.Id</td>
+                <td>@quarter.QuarterName</td>
+                <td><a asp-action="QuartersEdit" asp-controller="Home" asp-route-id="@quarter.Id" class="btn btn-primary">Изменить</a></td>
+                <td><a asp-action="QuartersDelete" asp-controller="Home" asp-route-id="@quarter.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+﻿@model TestApp.Models.FamilyStatus
+
+@{
+    ViewData["Title"] = "FamilyStatusAdd";
+}
+
+<form asp-action="FamilyStatusAdd" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Статус</label>
+        <input type="text" asp-for="Status" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

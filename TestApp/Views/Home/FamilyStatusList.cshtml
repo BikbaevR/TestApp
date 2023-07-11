@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "FamilyStatus";
+}
+
+@model IEnumerable<TestApp.Models.FamilyStatus>
+
+<a asp-action="FamilyStatusAdd" asp-controller="Home" class="btn btn-danger">Добавить статус</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Название</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var family in Model)
+        {
+            <tr>
+                <td scope="row">@family.Id</td>
+                <td>@family.Status</td>
+                <td><a asp-action="FamilyStatusEdit" asp-controller="Home" asp-route-id="@family.Id" class="btn btn-primary">Изменить</a></td>
+                <td><a asp-action="FamilyStatusDelete" asp-controller="Home" asp-route-id="@family.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

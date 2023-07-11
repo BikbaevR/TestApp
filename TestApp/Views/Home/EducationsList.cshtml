@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Educations";
+}
+
+@model IEnumerable<TestApp.Models.Educations>
+
+<a asp-action="EducationsAdd" asp-controller="Home" class="btn btn-danger">Добавить образование</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Название</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var education in Model)
+        {
+            <tr>
+                <td scope="row">@education.Id</td>
+                <td>@education.EducationName</td>
+                <td><a asp-action="EducationsEdit" asp-controller="Home" asp-route-id="@education.Id" class="btn btn-primary">Изменить</a></td>
+                <td><a asp-action="EducationsDelete" asp-controller="Home" asp-route-id="@education.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model TestApp.Models.Cities
+
+@{
+    ViewData["Title"] = "CitiesEdit";
+}
+
+<form asp-action="CitiesEdit" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <input type="text" name="Id" asp-for="Id" class="form-control" readonly />
+
+        <label asp-for="NameCity" class="control-label">Город</label>
+        <input type="text" asp-for="NameCity" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<TestApp.Models.employees>
+
+
+<div>
+    <a asp-action="AddData" asp-controller="Home" class="btn btn-primary">Добавить данные</a>
+    <a asp-action="EmployeesAdd" asp-controller="Home" class="btn btn-primary">Добавить сотрудника</a>
+    <a asp-action="AreasList" asp-controller="Home" class="btn btn-primary">Районы</a>
+    <a asp-action="CitiesList" asp-controller="Home" class="btn btn-primary">Города</a>
+    <a asp-action="CountriesList" asp-controller="Home" class="btn btn-primary">Страны</a>
+    <a asp-action="EducationsList" asp-controller="Home" class="btn btn-primary">Образования</a>
+    <a asp-action="FamilyStatusList" asp-controller="Home" class="btn btn-primary">Семейный статус</a>
+    <a asp-action="MilitarysList" asp-controller="Home" class="btn btn-primary">Военный билет</a>
+    <a asp-action="QuartersList" asp-controller="Home" class="btn btn-primary">Кварталы</a>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Перейти</th>
+            <th>Дата создания записи</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Страна рождения</th>
+            <th>Город рождения</th>
+            <th>Район</th>
+            <th>Квартал</th>
+            <th>Номер дома</th>
+            <th>Номер квартиры</th>
+            <th>Номер домашнего телефона</th>
+            <th>Номер сотового телефона</th>
+            <th>Статус семьи</th>
+            <th>Военный билет</th>
+            <th>Фото военногог билета</th>
+            <th>Серия паспорта</th>
+            <th>Фото паспорта</th>
+            <th>ИНН</th>
+            <th>ИНПС</th>
+            <th>Фото 3х4</th>
+            <th>Паспорт выдан</th>
+            <th>Дата выдачи паспорта</th>
+            <th>Образование</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td><a asp-action="Details" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-primary">Перейти</a></td>
+                <td>@emp.RecordCreationDate</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.Surname</td>
+                <td>@emp.DateOfBirth</td>
+                <td>@emp.Countries.CountryName</td>
+                <td>@emp.Cities.NameCity</td>
+                <td>@emp.Areas.AreaName</td>
+                <td>@emp.Quarters.QuarterName</td>
+                <td>@emp.HouseNumber</td>
+                <td>@emp.ApartmentNumber</td>
+                <td>@emp.HomePhoneNumber</td>
+                <td>@emp.PersonalNumber</td>
+                <td>@emp.FamilyStatus.Status</td>
+                <td>@emp.Militarys.MilitaryName</td>
+                <td><img style="max-width:80%" src="~/img/@emp.MilitaryIdPhoto"></td>
+                <td>@emp.PassportSeries</td>
+                <td><img style="max-width:80%" src="~/img/@emp.PassportPhoto"></td>
+                <td>@emp.TaxIdentificationNumber</td>
+                <td>@emp.IFPS</td>
+                <td><img style="max-width:80%" src="~/img/@emp.Photo"></td>
+                <td>@emp.PassportIssuedBy</td>
+                <td>@emp.PassportIssueDate</td>
+                <td>@emp.Educations.EducationName</td>
+                <td><a asp-action="EmployeesEdit" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-primary">Изменить</a></td>
+                <td><a asp-action="EmployeesDelete" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

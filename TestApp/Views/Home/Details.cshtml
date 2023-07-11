@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<TestApp.Models.employees>
+
+
+
+
+@foreach (var emp in Model)
+{
+    <p><b>#</b> @emp.Id</p>
+    <p><b>Дата создания записи: </b>@emp.RecordCreationDate</p>
+    <p><b>Имя: </b>@emp.FirstName</p>
+    <p><b>Фамилия: </b>@emp.LastName</p>
+    <p><b>Отчество: </b>@emp.Surname</p>
+    <p><b>Дата рождения: </b>@emp.DateOfBirth</p>
+    <p><b>Страна рождения: </b>@emp.Countries.CountryName</p>
+    <p><b>Город рождения: </b>@emp.Cities.NameCity</p>
+    <p><b>Район: </b>@emp.Areas.AreaName</p>
+    <p><b>Квартал: </b>@emp.Quarters.QuarterName</p>
+    <p><b>Номер дома: </b>@emp.HouseNumber</p>
+    <p><b>Номер квартиры: </b>@emp.ApartmentNumber</p>
+    <p><b>Номер домашнего телефона: </b>@emp.HomePhoneNumber</p>
+    <p><b>Номер сотового телефона: </b>@emp.PersonalNumber</p>
+    <p><b>Статус семьи: </b>@emp.FamilyStatus.Status</p>
+    <p><b>Военный билет: </b>@emp.Militarys.MilitaryName</p>
+    <p><b>Фото военногог билета: </b><img style="max-width:10%" src="~/img/@emp.MilitaryIdPhoto"></p>
+    <p><b>Серия паспорта: </b>@emp.PassportSeries</p>
+    <p><b>Фото паспорта: </b><img style="max-width:10%" src="~/img/@emp.PassportPhoto"></p>
+    <p><b>ИНН: </b>@emp.TaxIdentificationNumber</p>
+    <p><b>ИНП: </b>@emp.IFPS</p>
+    <p><b>Фото 3х4: </b><img style="max-width:10%" src="~/img/@emp.Photo"></p>
+    <p><b>Паспорт выдан: </b>@emp.PassportIssuedBy</p>
+    <p><b>Дата выдачи паспорта: </b>@emp.PassportIssueDate</p>
+    <p><b>Образование: </b>@emp.Educations.EducationName</p>
+    <p><b>Изменить: </b><a asp-action="EmployeesEdit" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-primary">Изменить</a></p>
+    <p><b>Удалить: </b><a asp-action="EmployeesDelete" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-danger">Удалить</a></p>
+}

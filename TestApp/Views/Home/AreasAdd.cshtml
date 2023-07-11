@@ -1,0 +1,17 @@
+﻿@model TestApp.Models.Areas
+
+@{
+    ViewData["Title"] = "AreasAdd";
+}
+
+<form asp-action="AreasAdd" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="AreaName" class="control-label">Район</label>
+        <input type="text" asp-for="AreaName" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

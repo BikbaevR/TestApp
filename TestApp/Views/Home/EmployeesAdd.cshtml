@@ -1,0 +1,136 @@
+﻿@model TestApp.Models.employees
+
+@{
+    ViewData["Title"] = "EmployeesAdd";
+}
+
+<form asp-action="employeesAdd" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label">Имя</label>
+        <input type="text" asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label">Фамилия</label>
+        <input type="text" asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname" class="control-label">Отчество</label>
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth" class="control-label">Дата рождения</label>
+        <input type="date" asp-for="DateOfBirth" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryID" class="control-label">Страна рождения</label>
+        @Html.DropDownListFor(model => model.CountryID, ViewBag.countryItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="CityOfBirthID" class="control-label">Город рождения</label>
+        @Html.DropDownListFor(model => model.CityOfBirthID, ViewBag.cityItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="AreaID" class="control-label">Район</label>
+        @Html.DropDownListFor(model => model.AreaID, ViewBag.areaItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="QuarterID" class="control-label">Квартал</label>
+        @Html.DropDownListFor(model => model.QuarterID, ViewBag.quarterItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="HouseNumber" class="control-label">Номер дома</label>
+        <input type="text" asp-for="HouseNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ApartmentNumber" class="control-label">Номер квартиры</label>
+        <input type="text" asp-for="ApartmentNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HomePhoneNumber" class="control-label">Домашний телефон</label>
+        <input type="text" asp-for="HomePhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PersonalNumber" class="control-label">Сотовый телефон</label>
+        <input type="text" asp-for="PersonalNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FamilyStatusID" class="control-label">Статус семьи</label>
+        @Html.DropDownListFor(model => model.FamilyStatusID, ViewBag.familyItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="MilitaryID" class="control-label">Военный билет</label>
+        @Html.DropDownListFor(model => model.MilitaryID, ViewBag.miitaryItems as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label asp-for="MilitaryIdPhoto" class="control-label">Фото военного билета</label>
+        <input accept="image/*" required onchange="showPreview_one(event);" type="file" asp-for="MilitaryIdPhoto" class="form-control" />
+        <img style="max-width:250px; margin:1%;" id="file-ip-1-preview">
+    </div>
+    <div class="form-group">
+        <label asp-for="PassportSeries" class="control-label">Серия паспорта</label>
+        <input type="text" asp-for="PassportSeries" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PassportPhoto" class="control-label">Фото паспорта</label>
+        <input accept="image/*" required onchange="showPreview_two(event);" type="file" asp-for="PassportPhoto" class="form-control" />
+        <img style="max-width:250px; margin:1%;" id="file-ip-2-preview">
+    </div>
+    <div class="form-group">
+        <label asp-for="TaxIdentificationNumber" class="control-label">ИНН</label>
+        <input type="number" asp-for="TaxIdentificationNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IFPS" class="control-label">ИНПС</label>
+        <input type="number" asp-for="IFPS" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo" class="control-label">Фото 3х4</label>
+        <input accept="image/*" required onchange="showPreview_three(event);" type="file" asp-for="Photo" class="form-control" />
+        <img style="max-width:250px; margin:1%;" id="file-ip-3-preview">
+    </div>
+    <div class="form-group">
+        <label asp-for="PassportIssuedBy" class="control-label">Паспорт выдан</label>
+        <input type="text" asp-for="PassportIssuedBy" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PassportIssueDate" class="control-label">Дата выдачи паспорта</label>
+        <input type="date" asp-for="PassportIssueDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EducationID" class="control-label">Образование</label>
+        @Html.DropDownListFor(model => model.EducationID, ViewBag.educationItems as SelectList, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>
+
+<script>
+    function showPreview_one(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-1-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+
+    function showPreview_two(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-2-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+    function showPreview_three(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-3-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+</script>

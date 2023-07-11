@@ -1,0 +1,17 @@
+﻿@model TestApp.Models.Quarters
+
+@{
+    ViewData["Title"] = "QuartersAdd";
+}
+
+<form asp-action="QuartersAdd" asp-controller="Home" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="QuarterName" class="control-label">Квартал</label>
+        <input type="text" asp-for="QuarterName" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" style="background-color: #66a5ad !important; color: white" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

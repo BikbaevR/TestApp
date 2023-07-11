@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Cityes";
+}
+
+@model IEnumerable<TestApp.Models.Cities>
+
+<a asp-action="CitiesAdd" asp-controller="Home" class="btn btn-danger">Добавить город</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Название</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in Model)
+        {
+            <tr>
+                <td scope="row">@city.Id</td>
+                <td>@city.NameCity</td>
+                <td><a asp-action="CitiesEdit" asp-controller="Home" asp-route-id="@city.Id" class="btn btn-primary">Изменить</a></td>
+                <td><a asp-action="CitiesDelete" asp-controller="Home" asp-route-id="@city.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
